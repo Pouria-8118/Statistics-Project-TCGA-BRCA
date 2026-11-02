@@ -14,6 +14,7 @@ Among TCGA-BRCA breast cancer patients, does adding RNA-derived molecular inform
 ## 4. Unit of observation and population
 - **Unit:** the patient (one RNA file per patient, chosen by a fixed rule).
 - **Population:** TCGA-BRCA patients with RNA-Seq and complete receptor status and age. Results describe this group, not all breast cancer patients.
+- **Study design:** retrospective observational study based on secondary analysis of existing TCGA data; no intervention was assigned.
 
 ## 5. Main variables and scale
 | Variable | Scale |
@@ -22,7 +23,7 @@ Among TCGA-BRCA breast cancer patients, does adding RNA-derived molecular inform
 | Luminal score (mean z-score of *ESR1, PGR, FOXA1, GATA3*) | continuous |
 | *ERBB2* expression, log2(TPM+1) | continuous |
 | Age at index | continuous |
-| ER, PR, HER2 status | binary |
+| ER, PR, HER2 status | Categorical (binary nominal) |
 
 Gene list and score definitions: `data/README.md`.
 

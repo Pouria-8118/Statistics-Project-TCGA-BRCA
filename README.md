@@ -4,6 +4,8 @@ Individual statistics project on TCGA-BRCA (clinical and RNA-Seq data from the N
 
 > **Status:** Phase 1 (data understanding and descriptive analysis).
 
+This project follows **Path B (TCGA-BRCA: Clinical + RNA-Seq)**, combining patient-level clinical and RNA-Seq data.
+
 ## Statistical question
 
 Among TCGA-BRCA breast cancer patients, does adding RNA-derived molecular information (a luminal-program score and *ERBB2* expression) to clinical information (ER, PR and HER2 status and age) explain additional variation in tumour proliferation, measured as a 17-gene expression score? The full project definition is in [`PROJECT_CARD.md`](PROJECT_CARD.md).
