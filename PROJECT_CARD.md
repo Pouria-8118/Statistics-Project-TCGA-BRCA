@@ -39,6 +39,6 @@ Associational.
 RNA-derived luminal and *ERBB2* expression explain some variation in proliferation beyond the clinical variables, because receptor status is a coarse binary summary of the underlying biology.
 
 ## 9. Initial limitations
-- **Missing data:** requiring complete receptor status and age removes 155 of 1,095 patients, who are not a random subset.
+- **Missing data:** requiring complete receptor status and age removes 155 of 1,095 patients, who may not be a random subset.
 - **Measurement:** receptor tests in the clinical files have no date, so they cannot be confirmed as primary-tumour results at diagnosis; HER2 combines FISH and IHC.
 - **RNA and score:** bulk tissue mixes tumour and non-tumour cells, and the 17-gene score is project-defined, not a validated clinical signature.
