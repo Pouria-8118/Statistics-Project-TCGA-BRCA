@@ -2,7 +2,7 @@
 
 Individual statistics project on TCGA-BRCA (clinical and RNA-Seq data from the NCI Genomic Data Commons, open-access files).
 
-> **Status:** Phase 1 (data understanding and descriptive analysis).
+> **Status:** Phase 2 (probability and distributions).
 
 This project follows **Path B (TCGA-BRCA: Clinical + RNA-Seq)**, combining patient-level clinical and RNA-Seq data.
 
@@ -10,7 +10,7 @@ This project follows **Path B (TCGA-BRCA: Clinical + RNA-Seq)**, combining patie
 
 Among TCGA-BRCA breast cancer patients, does adding RNA-derived molecular information (a luminal-program score and *ERBB2* expression) to clinical information (ER, PR and HER2 status and age) explain additional variation in tumour proliferation, measured as a 17-gene expression score? The full project definition is in [`PROJECT_CARD.md`](PROJECT_CARD.md).
 
-![Data flow from downloaded files to the analytic cohort](figures/04_fig1_data_flow.png)
+![Data flow from downloaded files to the analytic cohort](figures/phase1/04_fig1_data_flow.png)
 
 ## Data
 
@@ -23,7 +23,11 @@ Among TCGA-BRCA breast cancer patients, does adding RNA-derived molecular inform
 
 The unit of analysis is the patient. Raw data are not included in this repository; sources, files and rebuilding steps are in [`data/README.md`](data/README.md).
 
-![Proliferation score by receptor group](figures/04_fig5_prolif_by_group.png)
+![Proliferation score by receptor group](figures/phase1/04_fig5_prolif_by_group.png)
+
+![Probability of high proliferation within clinical group, by molecular group](figures/phase2/05_prob_high_prolif_two_way.png)
+
+![Relation with the proliferation score within receptor groups](figures/phase2/07_relations_within_groups.png)
 
 ## Repository structure
 
@@ -32,8 +36,13 @@ data/
   metadata/       GDC manifest and sample sheet
   raw/            GDC downloads (not tracked)
   processed/      tables produced by the notebooks (not tracked)
-figures/          figures produced by the notebooks
-notebooks/        analysis notebooks, run in order
+figures/
+  phase1/         figures from notebooks 01-04
+  phase2/         figures from notebooks 05-07
+notebooks/
+  phase1/         notebooks 01-04
+  phase2/         notebooks 05-07
+  exports/        HTML exports of the executed notebooks, by phase
 reports/          phase reports (PDF)
 PROJECT_CARD.md   project definition
 requirements.txt  Python dependencies
@@ -47,15 +56,18 @@ requirements.txt  Python dependencies
 | `02_clinical_audit_receptors` | Clinical audit and ER/PR/HER2 status |
 | `03_rna_extraction_molecular_audit` | RNA extraction, quality checks, proliferation and luminal scores |
 | `04_integration_descriptives_final_question` | Data flow, included vs excluded patients, descriptive analysis |
+| `05_events_conditional_probability` | Events, joint and conditional probabilities, independence, Bayes' rule |
+| `06_distributions_binomial_moments` | Distributions, normal check, binomial model, expectation and variance |
+| `07_covariance_relationships` | Covariance and correlation, overall and within receptor groups |
 
 ## Reproducing
 
 ```bash
 pip install -r requirements.txt
-jupyter notebook notebooks/
+jupyter notebook notebooks/phase1/   # then notebooks/phase2/
 ```
 
-Place the GDC downloads in `data/raw/` as described in [`data/README.md`](data/README.md) and run the notebooks 01 to 04 in order. Notebook 01 queries the GDC API only if its aliquot cache is missing; notebook 03 reads all 1,095 selected RNA files on its first run.
+Place the GDC downloads in `data/raw/` as described in [`data/README.md`](data/README.md) and run the notebooks 01 to 04 in order. Notebooks 05 to 07 read only `data/processed/analysis_table.csv`, written by notebook 04. Notebook 01 queries the GDC API only if its aliquot cache is missing; notebook 03 reads all 1,095 selected RNA files on its first run.
 
 ## References
 
